@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2067BD91-C165-47A4-9E8E-206D2B854749}</ProjectGuid>
+    <ProjectGuid>{EF14B939-30CC-4D16-BD84-438015A8CD22}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp1</RootNamespace>
-    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <RootNamespace>Lab_3</RootNamespace>
+    <AssemblyName>Lab 3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,31 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Lab3Scale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Lab3Scale.Designer.cs">
+      <DependentUpon>Lab3Scale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab2RNG.cs">
+    <Compile Include="CalibrationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab2RNG.Designer.cs">
-      <DependentUpon>Lab2RNG.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lab2ThermistorDAQ.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lab2ThermistorDAQ.Designer.cs">
-      <DependentUpon>Lab2ThermistorDAQ.cs</DependentUpon>
+    <Compile Include="CalibrationWindow.Designer.cs">
+      <DependentUpon>CalibrationWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Lab2RNG.resx">
-      <DependentUpon>Lab2RNG.cs</DependentUpon>
+    <EmbeddedResource Include="CalibrationWindow.resx">
+      <DependentUpon>CalibrationWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab2ThermistorDAQ.resx">
-      <DependentUpon>Lab2ThermistorDAQ.cs</DependentUpon>
+    <EmbeddedResource Include="Lab3Scale.resx">
+      <DependentUpon>Lab3Scale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

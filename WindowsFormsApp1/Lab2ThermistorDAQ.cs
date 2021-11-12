@@ -165,7 +165,7 @@ namespace Lab2
                             temperatureKDisplay.Text = temp.ToString();
                             temperatureCDisplay.Text = (temp - 273.15).ToString();
 
-                            float tempAvg = tempAvgQueue.Average();                        // take the average 
+                            float tempAvg = tempAvgQueue.Average();                        // take the average of the average queue
                             tempKRollingAvgDisplay.Text = tempAvg.ToString();
                             
                             if(tempQueue.Count > tempWindowSize)
