@@ -30,9 +30,10 @@ namespace Lab_3
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab3Scale));
             this.voltsDisplay = new System.Windows.Forms.TextBox();
             this.comPortDropdown = new System.Windows.Forms.ComboBox();
             this.connectSerialButton = new System.Windows.Forms.Button();
@@ -56,8 +57,8 @@ namespace Lab_3
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.massDisplayAvg = new System.Windows.Forms.TextBox();
             this.kgLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -193,7 +194,7 @@ namespace Lab_3
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.voltsDisplay);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(24, 187);
+            this.groupBox3.Location = new System.Drawing.Point(24, 178);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(255, 132);
             this.groupBox3.TabIndex = 27;
@@ -239,18 +240,18 @@ namespace Lab_3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(298, 402);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(867, 214);
             this.chart1.TabIndex = 32;
             this.chart1.Text = "chart1";
@@ -314,23 +315,12 @@ namespace Lab_3
             this.groupBox5.Controls.Add(this.massOffsetDisplay);
             this.groupBox5.Controls.Add(this.tareButton);
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(24, 31);
+            this.groupBox5.Location = new System.Drawing.Point(24, 22);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(255, 150);
             this.groupBox5.TabIndex = 37;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Averaged";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(210, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 17);
-            this.label4.TabIndex = 37;
-            this.label4.Text = "kg";
             // 
             // label8
             // 
@@ -343,6 +333,17 @@ namespace Lab_3
             this.label8.TabIndex = 38;
             this.label8.Text = "kg";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(210, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 17);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "kg";
+            // 
             // massDisplayAvg
             // 
             this.massDisplayAvg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -351,7 +352,7 @@ namespace Lab_3
             this.massDisplayAvg.BackColor = System.Drawing.Color.DarkSlateGray;
             this.massDisplayAvg.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.massDisplayAvg.ForeColor = System.Drawing.Color.Honeydew;
-            this.massDisplayAvg.Location = new System.Drawing.Point(391, 32);
+            this.massDisplayAvg.Location = new System.Drawing.Point(394, 32);
             this.massDisplayAvg.Name = "massDisplayAvg";
             this.massDisplayAvg.Size = new System.Drawing.Size(578, 121);
             this.massDisplayAvg.TabIndex = 28;
@@ -363,7 +364,8 @@ namespace Lab_3
             this.kgLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kgLabel.AutoSize = true;
             this.kgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kgLabel.Location = new System.Drawing.Point(975, 32);
+            this.kgLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.kgLabel.Location = new System.Drawing.Point(978, 32);
             this.kgLabel.Name = "kgLabel";
             this.kgLabel.Size = new System.Drawing.Size(129, 95);
             this.kgLabel.TabIndex = 31;
@@ -382,8 +384,9 @@ namespace Lab_3
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Lab3Scale";
-            this.Text = "Form1";
+            this.Text = "Lab 3 Scale UI";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

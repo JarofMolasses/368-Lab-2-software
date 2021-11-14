@@ -27,11 +27,16 @@ namespace Lab_3
 
 
             // initialize chart
-            chart1.Titles.Add($"Mass (kg), last {DISPLAY_BUFFER_SIZE} samples");
+            chart1.Titles.Add($"Last {DISPLAY_BUFFER_SIZE} samples");
             chart1.Titles[0].ForeColor = Color.White;
             this.chart1.Series.Clear();
+            chart1.Series.Add("V");
             chart1.Series.Add("Mass");
-            chart1.Series["Mass"].ChartType = SeriesChartType.Line;             // make sure it's a line chart.
+            chart1.Series["V"].ChartType = SeriesChartType.Line;             // make sure it's a line chart.
+            chart1.Series["Mass"].ChartType = SeriesChartType.Line;
+            chart1.Series["V"].Color = Color.Red;
+            chart1.Series["Mass"].Color = Color.Blue;
+
             chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
             chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Transparent;
@@ -43,9 +48,14 @@ namespace Lab_3
 
         ConcurrentQueue<double> voltsQueue = new ConcurrentQueue<double>();
         ConcurrentQueue<double> massQueue = new ConcurrentQueue<double>();
-        ConcurrentQueue<double> massQueueAvg = new ConcurrentQueue<double>();     // rolling average queue. it's just a copy of massQueue but we can limit the size of this one to whatever we want before taking the average.
+
+        ConcurrentQueue<double> massQueueAvg = new ConcurrentQueue<double>();     
+        // rolling average queue. it's just a copy of massQueue but we can limit the size of this one to whatever we want
+        // (separate from DISPLAY BUFFER SIZE) before taking the average.
+
         ConcurrentQueue<double> massQueueSdev = new ConcurrentQueue<double>();
 
+        double[] voltsGraphArray = new double[DISPLAY_BUFFER_SIZE];
         double[] massGraphArray = new double[DISPLAY_BUFFER_SIZE];                // snapshot array for graphing. It's one way to do it.
         double massSumOfSquares = 0;                                             // track mass sum of squares for sdev
         double stabilityThres = 0.005;                                             // sdev threshold for a stable reading
@@ -116,13 +126,15 @@ namespace Lab_3
 
         private void updateChart()
         {
+            chart1.Series["V"].Points.Clear();
             chart1.Series["Mass"].Points.Clear();
 
-            massQueue.CopyTo(massGraphArray, 0);          // snapshot of the queue at this time, copy to an array
-            for (int i = 0; i < massQueue.Count; i++)
+            voltsQueue.CopyTo(voltsGraphArray, 0);          // snapshot of the queue at this time, copy to an array
+            massQueue.CopyTo(massGraphArray, 0);
+            for (int i = 0; i < voltsQueue.Count; i++)
             {
-                double massOut = massGraphArray[i] - massOffset;
-                chart1.Series["Mass"].Points.AddXY(i, massOut);
+                chart1.Series["V"].Points.AddXY(i, voltsGraphArray[i]);
+                chart1.Series["Mass"].Points.AddXY(i, massGraphArray[i] - massOffset);
             }
         }
         private double convertVoltsToMass(double volts)
@@ -181,6 +193,10 @@ namespace Lab_3
                             massDisplayAvgRaw.Text = massAvg.ToString("##0.000");
                             massDisplayAvg.Text = (massAvg - massOffset).ToString("##0.000");          // adjust final reading with massOffset
 
+                            if (voltsQueue.Count > DISPLAY_BUFFER_SIZE)
+                            {
+                                voltsQueue.TryDequeue(out trash);
+                            }
                             if (massQueue.Count > DISPLAY_BUFFER_SIZE)
                             {
                                 massQueue.TryDequeue(out trash);                           // keeps the mass queue at DISPLAY_BUFFER_SIZE items
